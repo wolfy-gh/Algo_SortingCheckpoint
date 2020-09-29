@@ -1,0 +1,31 @@
+PROCEDURE swap(i,j:INTEGER , VAR arr: ARRAY_OF INTEGER[20])
+VAR
+    temp : ARRAY_OF INTEGER[20];
+BEGIN
+    temp := arr[j];
+    arr[j]= arr[i];
+    arr[i]= temp
+END
+
+FUNCTION insertionSort(VAR arr : ARRAY_OF INTEGER[20];) : ARRAY_OF INTEGER
+VAR
+    i,j : INTEGER;
+BEGIN
+    FOR i FROM 0 TO arr.length-1 STEP 1  DO
+        j := i;
+        WHILE ((j>0) AND (arr[j]< arr[j-1])) DO
+            swap(j,j-1,arr);
+            j:= j-1;
+        END_WHILE
+    END_FOR
+    RETURN arr ;
+END
+
+ALGORITHM Insertion_sort
+VAR
+    tab,t : ARRAY_OF INTEGER[20];
+BEGIN
+    tab:= {1,5,7,6,9,8}
+    t := insertionSort(tab)
+     Write(t); // return t:={1,5,6,7,8,9}
+END
